@@ -1,0 +1,690 @@
+body {
+    font-family: "Oswald", sans-serif;
+    background-color: #f9f0e6;
+    color: #3c2f2f;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Header */
+header {
+    background-color: #5C4033;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+}
+
+/* Логотип */
+header img {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 2%;
+    left: 2%;
+}
+
+h2 {
+    font-size: 2rem; /* Увеличиваем размер шрифта */
+    text-align: center; /* Выравнивание текста по центру */
+    color: #3c2f2f; /* Цвет текста (можно настроить по вашему желанию) */
+    margin: 20px 0; /* Отступы сверху и снизу */
+    font-weight: bold; /* Жирный шрифт для акцента */
+}
+
+/* Навигация */
+
+nav {
+    background-color: #a6755f;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    z-index: 4;
+}
+
+nav ul {
+    display: flex;
+    gap: 1px; 
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    color: #ffee8e;
+    padding: 10px 20px;
+    border: 2px solid #ffee8e; /* Добавлена граница */
+    position: relative;
+    transition: color 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+nav ul li a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачное затемнение */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: 300; /* Затемнение под текстом */
+}
+
+nav ul li a:hover::before {
+    transform: scaleX(1); /* Затемнение появляется при наведении */
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Меню-бургер */
+.burger {
+    display: none;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    cursor: pointer;
+    z-index: 500;
+}
+
+.burger span {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #ffee8e;
+}
+
+.burger span:nth-child(1) {
+    top: 0;
+}
+
+.burger span:nth-child(2) {
+    top: 8px;
+}
+
+.burger span:nth-child(3) {
+    top: 16px;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+input[type="checkbox"]:checked ~ nav {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+input[type="checkbox"]:checked ~ .burger span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 8px;
+}
+
+input[type="checkbox"]:checked ~ .burger span:nth-child(2) {
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked ~ .burger span:nth-child(3) {
+    transform: rotate(-45deg);
+    top: 8px;
+}
+
+/* Фоновое оформление для секции "О нас" */
+#about {
+    padding: 50px 20px;
+    background-color: #f9f0e6;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Контент внутри секции */
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1200px;
+}
+
+/* Текст и изображение */
+.about-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-item img {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border: 5px solid rgba(172, 116, 95, 0.5);
+    object-fit: cover;
+}
+
+/* Описание с дополнительной информацией */
+.about-description {
+    flex: 1;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #3c2f2f;
+    padding: 20px;
+    background: rgba(255, 236, 210, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Список преимуществ */
+.advantages {
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.advantages li {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #5c4033;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.advantages li::before {
+    content: "✔";
+    color: #a6755f;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Видео внутри секции */
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    background: #fff9f2;
+    border: 3px solid rgba(172, 116, 95, 0.5);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100%;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.video-container .description {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #3c2f2f;
+    background: rgba(255, 236, 210, 0.7);
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+}
+
+
+
+/* Переменные */
+:root {
+    --main-color: rgba(255, 255, 255, 0.2);
+    --accent-color: #a6755f;
+    --highlight-color: #ffee8e;
+    --border-radius: 15px;
+    --animation-speed: 0.5s;
+}
+
+/* Карточки с отзывами */
+.glass-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.glass-card {
+    position: relative;
+    width: calc(30% - 10px);
+    min-width: 250px;
+    height: 200px;
+    background: linear-gradient(145deg, rgba(255, 236, 210, 0.7), rgba(172, 116, 95, 0.8));
+    border: 1px solid rgba(255, 236, 210, 0.5);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    transition: transform var(--animation-speed), box-shadow var(--animation-speed);
+    z-index: 3;
+}
+
+.glass-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #5C4033;
+}
+
+.glass-card p {
+    font-size: 1rem;
+    color: #3C2F2F;
+}
+
+.glass-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    width: 99.25vw; /* Растянуть на всю ширину окна */
+    margin: 0;
+    padding: 20px 0;
+    background-color: #5C4033; /* Цвет хедера */
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* Отступы между блоками */
+}
+
+footer address {
+    margin: 0;
+    font-style: normal;
+    font-size: 1rem;
+    color: #ffee8e;
+    text-align: center;
+}
+
+footer a {
+    color: #ffee8e;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+/* Социальные кнопки */
+.social-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-btn {
+    color: #ffee8e;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #ffee8e;
+    border-radius: 5px;
+    transition: color 0.3s, border-color 0.3s, transform 0.2s;
+}
+
+.social-btn:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+    transform: scale(1.1);
+}
+
+
+/* Форма регистрации */
+.registration-form {
+    display: grid;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.registration-form h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #3C2F2F;
+}
+
+.registration-form form {
+    display: grid;
+    gap: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    gap: 15px;
+}
+
+.form-grid label {
+    text-align: left;
+    font-size: 1rem;
+    color: #3C2F2F;
+}
+
+.form-grid input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+
+.registration-form button {
+    padding: 10px;
+    font-size: 1rem;
+    background-color: #a6755f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.registration-form button:hover {
+    background-color: #ffee8e;
+}
+
+
+.like-button {
+    background-color: lightgray;
+    border-radius: 10px;
+    color: black;
+    padding: 10px 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.like-button.active {
+    background-color: rgb(255, 96, 96);
+    color: white;
+}
+
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Центруем карточки */
+    gap: 2%; /* Отступы между карточками */
+}
+
+.grid-item {
+    position: relative;
+    width: 20%; /* Карточки занимают 30% ширины контейнера */
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.3s ease; /* Анимация увеличения */
+    z-index: 0;
+}
+
+.grid-item:hover {
+    transform: scale(1.05); /* Увеличиваем карточку при наведении */
+}
+
+.grid-item img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+}
+
+.grid-item p {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Обеспечение, что подкатегории всегда сверху */
+.subcategory {
+    display: none; /* Скрываем подкатегории по умолчанию */
+    position: absolute; /* Абсолютное позиционирование */
+    top: 100%; /* Появляются сразу под карточкой */
+    left: 0;
+    width: 100%; /* Полная ширина карточки */
+    background-color: #ffffff; /* Белый фон */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень */
+    z-index: 100; /* Высокий z-index, чтобы быть выше карточек */
+    transform: translateY(10px); /* Небольшое смещение */
+    opacity: 0; /* Невидимость по умолчанию */
+    transition: all 0.3s ease; /* Плавное появление */
+}
+
+.grid-item:hover .subcategory {
+    display: block; /* Показываем подкатегории при наведении */
+    opacity: 1; /* Делаем их видимыми */
+    transform: translateY(0); /* Убираем смещение */
+}
+
+.grid-item:hover {
+    z-index: 1;
+}
+
+.subcategory-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    z-index: 10000;
+}
+
+
+.subcategory-item img {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 5px;
+    margin-right: 10px;
+    z-index: 10000;
+}
+
+.subcategory-item p {
+    flex-grow: 1;
+    margin: 0;
+    font-size: 14px;
+    z-index: 10000;
+}
+
+.cart-button {
+    background-color: #ffffff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.cart-button:hover {
+    background-color: #000000; /* Тёмный оттенок при наведении */
+}
+
+.cart-button.clicked {
+    background-color: #000000; /* Цвет фона после нажатия */
+}
+
+.cart-link {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #ffee8e;
+    color: #3c2f2f;
+    font-size: 1.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    z-index: 100;
+}
+
+.cart-link:hover {
+    background-color: #e6d086;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    color: #3c2f2f; /* Сохраняем цвет эмодзи */
+    transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+    .grid-item {
+        width: 45%; 
+    }
+
+    footer {
+        width: 100vw; /* Растянуть на всю ширину окна */
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .grid-item {
+        width: 45%; /* Уменьшаем ширину карточек на планшетах */
+    }
+
+    header img {
+        width: 75px;
+        height: 75px;
+        position: fixed;
+        top: 2%;
+        left: 2%;
+    }
+
+    h1 {
+        font-size: 1.5rem; 
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .category {
+        flex-direction: column;
+    }
+
+    .category img {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .burger {
+        display: block;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 200px;
+        height: 100%;
+        background: #a6755f;
+        flex-direction: column;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateX(100%);
+        z-index: 6;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 25px;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav ul li a::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачное затемнение */
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+        z-index: 300; /* Затемнение под текстом */
+    }
+    
+    nav ul li a:hover::before {
+        transform: scaleX(1); /* Затемнение появляется при наведении */
+    }
+    
+    nav ul li a:hover {
+        color: #ffffff;
+        border-color: #ffffff;
+    }
+
+    .glass-card {
+        width: calc(100% - 20px);
+    }
+}
+
+
+@media (max-width: 480px) {
+    .grid-item {
+        width: 90%; /* Карточки занимают почти всю ширину экрана */
+    }
+
+    .subcategory-item img {
+        width: 90px; /* Уменьшаем изображения в подкатегориях */
+        height: 90px;
+    }
+
+    .cart-button {
+        font-size: 10px; /* Уменьшаем шрифт кнопок */
+    }
+}
