@@ -307,13 +307,14 @@ input[type="checkbox"]:checked ~ .burger span:nth-child(3) {
 }
 
 footer {
-    width: 99.25vw; /* Растянуть на всю ширину окна */
+    width: 100vw; /* Растянуть на всю ширину окна */
     margin: 0;
+    bottom: 0;
     padding: 20px 0;
     background-color: #5C4033; /* Цвет хедера */
     color: #ffffff;
     text-align: center;
-    position: relative;
+    position: fixed;
 }
 
 .footer-content {
@@ -340,7 +341,6 @@ footer a:hover {
     color: #ffffff;
     text-decoration: underline;
 }
-
 /* Социальные кнопки */
 .social-buttons {
     display: flex;
